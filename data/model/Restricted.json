@@ -1,0 +1,97 @@
+{
+    "entityTypes": [
+        {
+            "name": "Thing",
+            "plural": "Things",
+            "adminOnly": false,
+            "table": "THINGS",
+            "entityProperties": [
+                {
+                    "name": "restricted",
+                    "type": "Edm.Boolean",
+                    "handlers": [
+                        {
+                            "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperBoolean",
+                            "field": "RESTRICTED"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Location",
+            "plural": "Locations",
+            "adminOnly": false,
+            "table": "LOCATIONS",
+            "entityProperties": [
+                {
+                    "name": "restricted",
+                    "type": "Edm.Boolean",
+                    "handlers": [
+                        {
+                            "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperBoolean",
+                            "field": "RESTRICTED"
+                        }
+                    ]
+                }
+            ],
+            "navigationProperties": [
+                {
+                    "name": "GeneratedFeature",
+                    "entitySet": false,
+                    "entityType": "FeatureOfInterest",
+                    "required": false,
+                    "inverse": {
+                        "name": "GeneratedForLocations",
+                        "entitySet": true,
+                        "required": false
+                    },
+                    "handlers": [
+                        {
+                            "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
+                            "field": "GEN_FOI_ID",
+                            "otherTable": "FEATURES",
+                            "otherField": "ID"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Datastream",
+            "plural": "Datastreams",
+            "adminOnly": false,
+            "table": "DATASTREAMS",
+            "entityProperties": [
+                {
+                    "name": "restricted",
+                    "type": "Edm.Boolean",
+                    "handlers": [
+                        {
+                            "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperBoolean",
+                            "field": "RESTRICTED"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "FeatureOfInterest",
+            "plural": "FeaturesOfInterest",
+            "adminOnly": false,
+            "table": "FEATURES",
+            "entityProperties": [
+                {
+                    "name": "restricted",
+                    "type": "Edm.Boolean",
+                    "handlers": [
+                        {
+                            "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperBoolean",
+                            "field": "RESTRICTED"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
