@@ -226,16 +226,16 @@
     <!-- Restricted flag on Thing, Location, Datastream and FeatureOfInterest -->
     <changeSet author="IOSB" id="2023-11-28_RestrictedFlags" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
         <addColumn tableName="THINGS">
-            <column name="RESTRICTED" type="boolean" defaultValueBoolean="true" />
+            <column name="RESTRICTED" type="boolean" defaultValueBoolean="false" />
         </addColumn>
         <addColumn tableName="LOCATIONS">
-            <column name="RESTRICTED" type="boolean" defaultValueBoolean="true" />
+            <column name="RESTRICTED" type="boolean" defaultValueBoolean="false" />
         </addColumn>
         <addColumn tableName="DATASTREAMS">
-            <column name="RESTRICTED" type="boolean" defaultValueBoolean="true" />
+            <column name="RESTRICTED" type="boolean" defaultValueBoolean="false" />
         </addColumn>
         <addColumn tableName="FEATURES">
-            <column name="RESTRICTED" type="boolean" defaultValueBoolean="true" />
+            <column name="RESTRICTED" type="boolean" defaultValueBoolean="false" />
         </addColumn>
     </changeSet>
 
