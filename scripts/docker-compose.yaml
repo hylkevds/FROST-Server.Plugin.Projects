@@ -35,6 +35,40 @@ services:
       projects_database:
         condition: service_healthy
 
+  projects_web_anonym:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: hylkevds/frost-http-projects:latest
+    ports:
+      - 8081:8080
+    environment:
+      - serviceRootUrl=http://localhost:8081/FROST-Server
+      - queueLoggingInterval=1000
+      - http_cors_enable=true
+      - http_cors_allowed_origins=*
+      - persistence_db_driver=org.postgresql.Driver
+      - persistence_db_url=jdbc:postgresql://projects_database:5432/sensorthings
+      - persistence_db_username=sensorthings
+      - persistence_db_password=ChangeMe
+      - persistence_autoUpdateDatabase=true
+      - auth_provider=
+      - auth_allowAnonymousRead=false
+      - auth_authenticateOnly=true
+      - auth_realmName=FROST-Server
+      - auth_db_driver=org.postgresql.Driver
+      - auth_db_url=jdbc:postgresql://projects_database:5432/sensorthings
+      - auth_db_username=sensorthings
+      - auth_db_password=ChangeMe
+      - auth_autoUpdateDatabase=true
+      - auth_plainTextPassword=false
+      - FROST_LL=info
+      - FROST_LL_service=info
+      - FROST_LL_org_jooq=info
+    depends_on:
+      projects_database:
+        condition: service_healthy
+
   projects_database:
     image: postgis/postgis:14-3.2-alpine
     environment:
