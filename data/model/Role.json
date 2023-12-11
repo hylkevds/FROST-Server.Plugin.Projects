@@ -5,7 +5,7 @@
     {
       "name": "Role",
       "plural": "Roles",
-      "adminOnly": true,
+      "adminOnly": false,
       "table": "ROLES",
       "entityProperties": [
         {

@@ -5,7 +5,7 @@
     {
       "name": "UserProjectRole",
       "plural": "UserProjectRoles",
-      "adminOnly": true,
+      "adminOnly": false,
       "table": "USER_PROJECT_ROLE",
       "entityProperties": [
         {
