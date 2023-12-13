@@ -1,6 +1,43 @@
-# Fine-Grained Security Test
+# Fine-Grained Security with Projects
 
-A fine-grained security definition for FROST-Server.
+A fine-grained security definition for FROST-Server, based on Projects.
+
+## Installing
+
+The plugin can be used with docker, or directly on an existing Tomcat server.
+
+### Docker
+
+The easiest way to use the plugin is as a docker image.
+An [example DockerCompse file](scripts/docker-compose.yaml) is provided with the plugin.
+You can either build the Docker image yourself using the provided [Dockerfile](Dockerfile) or use the image `hylkevds/frost-http-projects:latest`.
+
+### Tomcat
+
+To use the plugin with a FROST-Server installed directly in a local Tomcat:
+1. Copy the files to the local file system (easiest using `git checkout `)
+1. Add the following parameters to the context XML file:
+   - `plugins.coreModel.enable` = `true`
+   - `plugins.actuation.enable` = `false`
+   - `plugins.multiDatastream.enable` = `false`
+   - `plugins.openApi.enable` = `true`
+   - `plugins.odata.enable` = `true`
+   - `plugins.csv.enable` = `true`
+   - `plugins.geojson.enable` = `true`
+   - `plugins.modelLoader.enable` = `true`
+   - `plugins.modelLoader.modelPath` = `/usr/local/tomcat/webapps/FROST-Server/WEB-INF/data/model`
+   - `plugins.modelLoader.modelFiles` = `Project.json, Restricted.json, Role.json, User.json, UserProjectRole.json`
+   - `plugins.modelLoader.securityPath` = `/usr/local/tomcat/webapps/FROST-Server/WEB-INF/data/security`
+   - `plugins.modelLoader.securityFiles` = `secDatastream.json, secFeature.json, secHistoricalLocation.json, secLocation.json, secObservation.json, secProject.json, secRole.json, secSensor.json, secThing.json, secUser.json, secUserProjectRole.json`
+   - `plugins.modelLoader.liquibasePath` = `/usr/local/tomcat/webapps/FROST-Server/WEB-INF/data/liquibase`
+   - `plugins.modelLoader.liquibaseFiles` = `tablesSecurityUPR.xml`
+   - `plugins.modelLoader.idType.Role` = `STRING`
+   - `plugins.modelLoader.idType.User` = `STRING`
+   - `persistence.idGenerationMode.Role` = `ClientGeneratedOnly`
+   - `persistence.idGenerationMode.User` = `ClientGeneratedOnly`
+1. Correct the three paths to the modelFiles, securityFiles and liquibaseFiles.
+1. Restart the web application and run the database update.
+
 
 ## Users, Projects, Roles, UserProjectRoles
 
