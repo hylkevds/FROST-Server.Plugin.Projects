@@ -239,4 +239,14 @@
         </addColumn>
     </changeSet>
 
+    <!-- Restricted flag on Thing, Location, Datastream and FeatureOfInterest -->
+    <changeSet author="IOSB" id="2024-01-19_RestrictedFlagMD" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <preConditions onFail="CONTINUE">
+            <tableExists tableName="MULTI_DATASTREAMS" />
+        </preConditions>
+        <addColumn tableName="MULTI_DATASTREAMS">
+            <column name="RESTRICTED" type="boolean" defaultValueBoolean="false" />
+        </addColumn>
+    </changeSet>
+
 </databaseChangeLog>
