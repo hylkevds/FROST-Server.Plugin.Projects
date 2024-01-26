@@ -56,7 +56,7 @@ Users can change their own password.
 
 - read
 - create
-- obsCreare
+- obscreate
 - update
 - delete
 - admin
