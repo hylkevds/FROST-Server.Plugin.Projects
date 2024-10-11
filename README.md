@@ -4,6 +4,8 @@ A fine-grained security definition for FROST-Server, based on Projects.
 
 ## Installing
 
+This Plugin is now supplied with FROST-Server by default, see https://fraunhoferiosb.github.io/FROST-Server/settings/plugins.html#projects
+
 The plugin can be used with docker, or directly on an existing Tomcat server.
 
 ### Docker
