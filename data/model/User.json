@@ -7,6 +7,7 @@
       "plural": "Users",
       "adminOnly": false,
       "table": "USERS",
+      "orderByDflt": [],
       "entityProperties": [
         {
           "name": "username",
@@ -37,10 +38,13 @@
           "entitySet": true,
           "entityType": "Role",
           "required": false,
+          "symmetrical": false,
+          "priority": 0,
           "inverse": {
             "name": "Users",
             "entitySet": true,
             "required": false,
+            "priority": 0,
             "annotations": []
           },
           "handlers": [

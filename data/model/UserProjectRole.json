@@ -7,6 +7,7 @@
       "plural": "UserProjectRoles",
       "adminOnly": false,
       "table": "USER_PROJECT_ROLE",
+      "orderByDflt": [],
       "entityProperties": [
         {
           "name": "id",
@@ -29,10 +30,13 @@
           "entitySet": false,
           "entityType": "Project",
           "required": true,
+          "symmetrical": false,
+          "priority": 0,
           "inverse": {
             "name": "UserProjectRoles",
             "entitySet": true,
             "required": false,
+            "priority": 0,
             "annotations": []
           },
           "handlers": [
@@ -50,10 +54,13 @@
           "entitySet": false,
           "entityType": "Role",
           "required": true,
+          "symmetrical": false,
+          "priority": 0,
           "inverse": {
             "name": "UserProjectRoles",
             "entitySet": true,
             "required": false,
+            "priority": 0,
             "annotations": []
           },
           "handlers": [
@@ -71,10 +78,13 @@
           "entitySet": false,
           "entityType": "User",
           "required": true,
+          "symmetrical": false,
+          "priority": 0,
           "inverse": {
             "name": "UserProjectRoles",
             "entitySet": true,
             "required": false,
+            "priority": 0,
             "annotations": []
           },
           "handlers": [

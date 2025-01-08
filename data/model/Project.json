@@ -1,5 +1,7 @@
 {
-  "conformance": [],
+  "conformance": [
+    "https://fraunhoferiosb.github.io/FROST-Server/extensions/DataModel-Projects.html"
+  ],
   "simplePropertyTypes": [],
   "entityTypes": [
     {
@@ -7,6 +9,7 @@
       "plural": "Projects",
       "adminOnly": false,
       "table": "PROJECTS",
+      "orderByDflt": [],
       "entityProperties": [
         {
           "name": "@iot.id",
@@ -25,6 +28,8 @@
         {
           "name": "name",
           "type": "Edm.String",
+          "required": true,
+          "nullable": false,
           "handlers": [
             {
               "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperString",
@@ -52,7 +57,8 @@
               "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperBoolean",
               "field": "ISPUBLIC"
             }
-          ]
+          ],
+          "annotations": []
         },
         {
           "name": "properties",
@@ -73,10 +79,13 @@
           "entitySet": true,
           "entityType": "Sensor",
           "required": false,
+          "symmetrical": false,
+          "priority": 0,
           "inverse": {
             "name": "Projects",
             "entitySet": true,
             "required": false,
+            "priority": 0,
             "annotations": []
           },
           "handlers": [
@@ -93,14 +102,44 @@
           "annotations": []
         },
         {
-          "name": "Things",
+          "name": "Locations",
           "entitySet": true,
-          "entityType": "Thing",
+          "entityType": "Location",
           "required": false,
+          "symmetrical": false,
+          "priority": 0,
           "inverse": {
             "name": "Projects",
             "entitySet": true,
             "required": false,
+            "priority": 0,
+            "annotations": []
+          },
+          "handlers": [
+            {
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperManyToMany",
+              "field": "ID",
+              "linkTable": "LOCATION_PROJECTS",
+              "linkOurField": "PROJECT_ID",
+              "linkOtherField": "LOCATION_ID",
+              "otherTable": "LOCATIONS",
+              "otherField": "ID"
+            }
+          ],
+          "annotations": []
+        },
+        {
+          "name": "Things",
+          "entitySet": true,
+          "entityType": "Thing",
+          "required": false,
+          "symmetrical": false,
+          "priority": 0,
+          "inverse": {
+            "name": "Projects",
+            "entitySet": true,
+            "required": false,
+            "priority": 0,
             "annotations": []
           },
           "handlers": [
@@ -121,10 +160,13 @@
           "entitySet": true,
           "entityType": "FeatureOfInterest",
           "required": false,
+          "symmetrical": false,
+          "priority": 0,
           "inverse": {
             "name": "Projects",
             "entitySet": true,
             "required": false,
+            "priority": 0,
             "annotations": []
           },
           "handlers": [
@@ -141,6 +183,7 @@
           "annotations": []
         }
       ],
+      "hooks": [],
       "annotations": []
     }
   ]

@@ -7,6 +7,7 @@
       "plural": "Roles",
       "adminOnly": false,
       "table": "ROLES",
+      "orderByDflt": [],
       "entityProperties": [
         {
           "name": "rolename",
